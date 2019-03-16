@@ -3,6 +3,7 @@ import requests, json, base64
 test_redirect_url = r'https://127.0.0.1:5454' # This is just a dummy url.. you need to add it to your app here as a redirect url here as well :)
 client_id = b'<your-app-id>'
 client_secret = b'<your-app-secret>'
+output_file_name = r'c:\temp\my_saved_songs.txt'
 
 #TODO: PASTE a real token here after you access and authorize the app in your url
 cur_token = '<your-token-after-accessing-to-the-url-said!>'
@@ -86,7 +87,7 @@ class SpotifySession():
         items, total = self._get_user_songs_offset(0, cnt)
         return items
 
-    def write_user_songs_list(self, output=r'c:\temp\my_saved_songs.txt'):
+    def write_user_songs_list(self, output=output_file_name):
         d = open(output, 'wb')
         for item in self.user_songs:
             artists = ', '.join([artist['name'] for artist in item['track']['artists']])
@@ -100,4 +101,9 @@ def test():
     res = s.get_user_songs()
     s.write_user_songs_list()
 
+def first_time_usage()
+    s = SpotifySession()
+    s.auth()
 
+first_time_usage()
+test()
